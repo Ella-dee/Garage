@@ -1,6 +1,8 @@
 package moteurs;
 
-public abstract class Moteur {
+import java.io.Serializable;
+
+public abstract class Moteur implements Serializable {
     String cylindre;
     double prix;
     TypeMoteur typeMoteur;

@@ -6,6 +6,7 @@ import voitures.*;
 class Main {
         public static void main(String[] args) {
             Garage garage = new Garage();
+            System.out.println(garage);
 
             Vehicule lag1 = new Lagouna();
             lag1.setMoteur(new MoteurEssence("150 Chevaux", 10256d));
@@ -47,7 +48,6 @@ class Main {
             d4_2.addOption(new VitreElectrique());
             garage.addVoiture(d4_2);
 
-            System.out.println(garage);
         }
     }
 

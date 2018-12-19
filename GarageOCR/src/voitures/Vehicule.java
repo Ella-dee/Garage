@@ -2,10 +2,11 @@ package voitures;
 import moteurs.*;
 import options.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vehicule {
+public class Vehicule implements Serializable {
     double prix;
     String nom;
     private List<Option> options = new ArrayList<>();
@@ -21,7 +22,7 @@ public class Vehicule {
     }
     public String toString(){
         double total = getPrix()+getPrixOptions()+moteur.getPrix();
-        return  "+ " + getMarque() + " : " + nom + " " + moteur.toString()+"("+getPrixVoitureMoteur()+"€)"+ getOptions()+" d'une valeur totale de "+arrondi(total,2)+"€.\n";
+        return  "+ " + getMarque() + " : " + nom + " " + moteur.toString()+"("+getPrixVoitureMoteur()+"€)"+ getOptions()+" d'une valeur totale de "+arrondi(total,2)+"€.";
     }
     public void addOption(Option option){
         options.add(option);
