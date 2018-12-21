@@ -170,13 +170,14 @@ public class Fenetre extends JFrame {
 
     class BoutonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            Object source = e.getSource();
-            if (source == bCancel){
+            Bouton bouton = (Bouton)e.getSource();
+            if (bouton == bCancel){
                 screened.setText( "" );
             }
-            String userInput = source.toString();
-            screened.setText(userInput);
-
+            else {
+                String userInput = bouton.getText();
+                screened.setText( userInput );
+            }
         }
     }
     public static void main(String[] args) {
