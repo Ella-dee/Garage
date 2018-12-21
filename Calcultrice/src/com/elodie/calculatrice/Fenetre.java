@@ -6,6 +6,9 @@ import com.elodie.calculatrice.vue.Bouton;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import static java.awt.Color.red;
 /**
  * <b>Fenetre est la classe pour l'affichage de la calculatrice.</b>
@@ -105,17 +108,29 @@ public class Fenetre extends JFrame {
         //Affichage des chiffres
         numbers.setLayout(gridWest);
         numbers.add(b1);
+        b1.addActionListener( (new BoutonListener()) );
         numbers.add(b2);
+        b2.addActionListener( (new BoutonListener()) );
         numbers.add(b3);
+        b3.addActionListener( (new BoutonListener()) );
         numbers.add(b4);
+        b4.addActionListener( (new BoutonListener()) );
         numbers.add(b5);
+        b5.addActionListener( (new BoutonListener()) );
         numbers.add(b6);
+        b6.addActionListener( (new BoutonListener()) );
         numbers.add(b7);
+        b7.addActionListener( (new BoutonListener()) );
         numbers.add(b8);
+        b8.addActionListener( (new BoutonListener()) );
         numbers.add(b9);
+        b9.addActionListener( (new BoutonListener()) );
         numbers.add(b0);
+        b0.addActionListener( (new BoutonListener()) );
         numbers.add(bDot);
+        bDot.addActionListener( (new BoutonListener()) );
         numbers.add(bEqual);
+        bEqual.addActionListener( (new BoutonListener()) );
         container.add(numbers);
 
         //Affichage des opérateurs sur la droite
@@ -124,10 +139,15 @@ public class Fenetre extends JFrame {
         Dimension opSize = new Dimension( 60, 35 );
         bCancel.setPreferredSize( opSize );
         operatorsInside.add(bCancel);
+        bCancel.addActionListener( (new BoutonListener()) );
         operatorsInside.add(bPlus);
+        bPlus.addActionListener( (new BoutonListener()) );
         operatorsInside.add(bMinus);
+        bMinus.addActionListener( (new BoutonListener()) );
         operatorsInside.add(bMultiply);
+        bMultiply.addActionListener( (new BoutonListener()) );
         operatorsInside.add(bDivide);
+        bDivide.addActionListener( (new BoutonListener()) );
         operators.add(operatorsInside);
 
         container.add(operators, BorderLayout.EAST);
@@ -136,24 +156,28 @@ public class Fenetre extends JFrame {
         this.setVisible(true);
 
         //On initialise la calculatrice
-        //this.calculatrice = new Calcultatrice();
+        this.calculatrice = new Calcultatrice();
 
         //On place un écouteur sur la calculatrice
-        /*this.calculatrice.addObservateur(new Observateur() {
+        this.calculatrice.addObservateur(new Observateur() {
                 public void update(String screenNumber) {
-                    label.setText(screenNumber);
+                    screened.setText(screenNumber);
                 }
         }
-        );*/
+        );
+        this.calculatrice.run();
+    }
 
-//    //On initialise le JLabel
-//    Font police = new Font("Arial", Font.TYPE1_FONT, 16);
-//        this.label.setFont(police);
-//        this.label.setHorizontalAlignment(JLabel.NORTH);
-//    //On ajoute le JLabel à la JFrame
-//        this.getContentPane().add(this.label, BorderLayout.NORTH);
-//        this.setVisible(true);
-//       // this.calculatrice.run();
+    class BoutonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            Object source = e.getSource();
+            if (source == bCancel){
+                screened.setText( "" );
+            }
+            String userInput = source.toString();
+            screened.setText(userInput);
+
+        }
     }
     public static void main(String[] args) {
         Fenetre fen = new Fenetre();
