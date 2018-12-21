@@ -28,6 +28,7 @@ import static java.awt.Color.red;
  * <p>
  *     On place un écouteur sur notre objet calculatrice, afin de gérer l'affichage en temps réel.
  * </p>
+ * @version 1.0
  * @author elojito
  */
 
