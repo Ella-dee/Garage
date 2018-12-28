@@ -10,8 +10,7 @@ import java.util.List;
 
 class Garage{
     private final List<Vehicule> voitures = new ArrayList<>();
-    private ObjectInputStream ois;
-    private ObjectOutputStream oos;
+
     public String toString(){
         String str = "";
         str += "***************************\n";
@@ -21,12 +20,12 @@ class Garage{
     }
     public Garage() {
         try {
-            ois = new ObjectInputStream(
+            ObjectInputStream ois = new ObjectInputStream(
                     new BufferedInputStream(
                             new FileInputStream(
-                                    new File("garage.txt"))));
+                                    new File( "garage.txt" ) ) ) );
             try {
-                for (Vehicule voiture : voitures) {
+                for (Vehicule v : voitures) {
                     System.out.println(((Vehicule) ois.readObject()).toString());
                 }
             } catch (ClassNotFoundException e) {
@@ -44,10 +43,10 @@ class Garage{
         voitures.clear();
         voitures.add(v);
         try {
-            oos = new ObjectOutputStream(
+            ObjectOutputStream oos = new ObjectOutputStream(
                     new BufferedOutputStream(
                             new FileOutputStream(
-                                    new File("garage.txt"))));
+                                    new File( "garage.txt" ) ) ) );
             for (Vehicule voiture : voitures) {
                 System.out.println( voiture.toString() );
                 oos.writeObject( voitures );
