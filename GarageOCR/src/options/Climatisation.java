@@ -2,7 +2,6 @@ package options;
 
 public class Climatisation implements Option {
     private final double prix = 347.3;
-    private final String nom = "Climatisation";
 
     @Override
     public double getPrix() {
@@ -10,6 +9,7 @@ public class Climatisation implements Option {
     }
 
     public String toString(){
+        String nom = "Climatisation";
         return nom + " (" + prix+ "€)";
     }
 }

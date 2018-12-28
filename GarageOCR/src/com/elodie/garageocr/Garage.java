@@ -10,8 +10,8 @@ import java.util.List;
 
 class Garage{
     private final List<Vehicule> voitures = new ArrayList<>();
-    ObjectInputStream ois;
-    ObjectOutputStream oos;
+    private ObjectInputStream ois;
+    private ObjectOutputStream oos;
     public String toString(){
         String str = "";
         str += "***************************\n";
@@ -43,18 +43,16 @@ class Garage{
     public void addVoiture(Vehicule v){
         voitures.clear();
         voitures.add(v);
-        // private final List<Vehicule> voitures = new ArrayList<>();
         try {
             oos = new ObjectOutputStream(
                     new BufferedOutputStream(
                             new FileOutputStream(
                                     new File("garage.txt"))));
-            for(int i = 0; i < voitures.size(); i++){
-                System.out.println(voitures.get(i).toString());
+            for (Vehicule voiture : voitures) {
+                System.out.println( voiture.toString() );
+                oos.writeObject( voitures );
             }
             oos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

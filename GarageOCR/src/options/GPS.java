@@ -2,7 +2,6 @@ package options;
 
 public class GPS implements Option {
     private final double prix = 113.59;
-    private final String nom = "GPS";
 
     @Override
     public double getPrix() {
@@ -10,6 +9,7 @@ public class GPS implements Option {
     }
 
     public String toString(){
+        String nom = "GPS";
         return nom + " (" + prix+ "€)";
     }
 }

@@ -9,9 +9,9 @@ import java.util.List;
 public class Vehicule implements Serializable {
     double prix;
     String nom;
-    private List<Option> options = new ArrayList<>();
-    private Marque nomMarque;
-    private Moteur moteur;
+    protected List<Option> options = new ArrayList<>();
+    protected Marque nomMarque;
+    protected Moteur moteur;
 
     Vehicule() {
         this.prix = prix;
@@ -39,27 +39,26 @@ public class Vehicule implements Serializable {
     private List<Option> getOptions(){
         return options;
     }
-    public double getPrix(){
+    double getPrix(){
         return prix;
     }
-    public double getPrixOptions(){
+    private double getPrixOptions(){
         double prixoptions = 0;
         for (Option options : options) {
             prixoptions += options.getPrix();
         }
         return prixoptions;
     }
-    public double getPrixVoitureMoteur(){
+    private double getPrixVoitureMoteur(){
         double prixvoit = getPrix();
         double prixmot = moteur.getPrix();
-        double total = prixvoit+prixmot;
-        return total;
+        return prixvoit+prixmot;
     }
     public String getNom(){
         return nom;
     }
 
-    public static double arrondi(double A, int B) {
+    private static double arrondi(double A, int B) {
         return (double) ( (int) (A * Math.pow(10, B) + .5)) / Math.pow(10, B);
 
     }
